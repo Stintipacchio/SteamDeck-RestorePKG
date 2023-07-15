@@ -1,0 +1,11 @@
+#!/bin/sh
+
+sudo steamos-readonly disable
+
+sudo pacman-key --init
+sudo pacman-key --populate
+sudo pacman-key --refresh-keys
+
+sudo pacman -S --needed - < pkglist-repo.txt
+
+for x in $(< pkglist-aur.txt); do yay -S $x; done
