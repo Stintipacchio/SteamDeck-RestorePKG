@@ -45,6 +45,7 @@ for x in $(< pkglist-aur.txt); do yay -S $x; done
 
 ## How to use
 Before the update run "pkglist-command" in a folder inside home.
+
 After the update run "restore-command".
 
 If you want re-eanble SteamOS read-only setting use in terminal:
