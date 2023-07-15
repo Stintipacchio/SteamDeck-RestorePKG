@@ -10,7 +10,7 @@ Creates 2 txt files (pkglist-repo.txt && pkglist-aur.txt) in current folder with
 using:
 
 ```bash
-sudo pacman -S --needed - < pkglist-repo.txt
+pacman -Qqen > pkglist-repo.txt
 ```
 
 and
