@@ -2,9 +2,31 @@
 
 sudo steamos-readonly disable
 
+sudo pacman -S glibc linux-api-headers
+
+sudo pacman -Qknq | cut -d' ' -f1 | sort -u | sudo pacman -S -
+
+sudo pacman -Sc
+sudo pacman -Sy
+
+sudo pacman -S libarchive
+
+
+#sudo rm /etc/package_name/path/conflict_file
+
+sudo pacman -S pacman
+
 sudo pacman-key --init
 sudo pacman-key --populate
 sudo pacman-key --refresh-keys
+
+sudo rm -r /home/deck/.cache/yay
+
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+yay -Y --gendb
+yay -Syu --devel
+yay -Y --devel --save
 
 sudo pacman -S --needed - < pkglist-repo.txt
 
