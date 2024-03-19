@@ -2,23 +2,7 @@
 
 sudo steamos-readonly disable
 
-sudo pacman -S glibc linux-api-headers
-
-sudo pacman -Qknq | cut -d' ' -f1 | sort -u | sudo pacman -S -
-
-sudo pacman -Sc
-sudo pacman -Sy
-
-sudo pacman -S libarchive
-
-
-#sudo rm /etc/package_name/path/conflict_file
-
-sudo pacman -S pacman
-
-sudo pacman-key --init
-sudo pacman-key --populate
-sudo pacman-key --refresh-keys
+sudo rm -rf /etc/pacman.d/gnupg/ && sudo pacman-key --init && sudo pacman-key --populate
 
 sudo rm -r /home/deck/.cache/yay
 
