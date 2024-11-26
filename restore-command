@@ -2,16 +2,26 @@
 
 sudo steamos-readonly disable
 
+sudo pacman -Syu --noconfirm
+
 sudo rm -rf /etc/pacman.d/gnupg/ && sudo pacman-key --init && sudo pacman-key --populate
+
+sudo pacman -S --needed - < pkglist-repo.txt --overwrite "*" --noconfirm
+
+sudo pacman -S --needed git base-devel --noconfirm
 
 sudo rm -r /home/deck/.cache/yay
 
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+sudo rm -r ./yay-bin
 
-yay -Y --gendb
-yay -Syu --devel
-yay -Y --devel --save
+sudo pacman -S --needed git base-devel && \
+git clone https://aur.archlinux.org/yay-bin.git && \
+cd yay-bin && \
+git checkout cb857e898d7081a60cf8742d26247fd6a3c5443c && \
+yes | makepkg -si
 
-sudo pacman -S --needed - < pkglist-repo.txt
+# yay -Y --gendb
+# yay -Syu --devel --noconfirm
+# yay -Y --devel --save
 
-for x in $(< pkglist-aur.txt); do yay -S $x; done
+for x in $(< pkglist-aur.txt); do yay -S  $x --noconfirm; done
